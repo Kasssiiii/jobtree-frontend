@@ -1,0 +1,15 @@
+.posting {
+    border: 1px solid #7d8d44;
+    border-radius: 4px;
+    padding: 12px;
+    margin: 8px 0;
+    background-color: #f9f9f9;
+}
+
+.posting h4 {
+    margin: 0 0 8px;
+}
+
+.posting p {
+    margin: 0;
+}

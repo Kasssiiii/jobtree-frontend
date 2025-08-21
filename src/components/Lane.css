@@ -1,0 +1,19 @@
+.lane {
+    border: 1px solid #7d8d44;
+    border-radius: 4px;
+    padding: 12px;
+    margin: 8px 0;
+    background-color: #f9f9f9;
+    width: 20%;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.lane h3 {
+    margin: 0 0 8px;
+}
+
+.lane .posting {
+    margin: 4px 0;
+}

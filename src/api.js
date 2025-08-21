@@ -45,3 +45,19 @@ export const registerUser = (username, password, response) => {
   };
   getResponse(`users`, params, body, null, response);
 };
+
+export const getUserPosts = (token, response) => {
+  getResponse("postings/user", {}, null, token, response);
+};
+
+export const sendPosting = (jobTitle, company, token, response) => {
+  const body = {
+    jobTitle: jobTitle,
+    company: company,
+  };
+  const params = {
+    method: "POST",
+  };
+  
+  getResponse("postings", params, body, token, response);
+};

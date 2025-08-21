@@ -61,3 +61,16 @@ export const sendPosting = (jobTitle, company, token, response) => {
   
   getResponse("postings", params, body, token, response);
 };
+
+export const updatePosting = (id, jobTitle, company, stage, token, response) => {
+  const body = {
+    jobTitle: jobTitle,
+    company: company,
+    stage: stage,
+  };
+  const params = {
+    method: "PUT",
+  };
+
+  getResponse(`postings/${id}`, params, body, token, response);
+};

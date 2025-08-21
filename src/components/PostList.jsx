@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { getUserPosts } from '../api';
+import { getUserPosts, updatePosting } from '../api';
 import { Lane } from './Lane';
 import './PostList.css';
 import { DndContext } from '@dnd-kit/core';
@@ -34,11 +34,27 @@ export const PostList = ({ user, tick }) => {
         const taskId = active.id;
         const newStage = over.id;
 
+        // fetch old stage
+        const oldStage = posts.find(post => post._id === taskId)?.stage;
+
         setPosts(() =>
             posts.map(post =>
                 post._id === taskId ? { ...post, stage: newStage } : post
             )
         );
+
+        updatePosting(taskId, null, null, newStage, user.token, (code, body) => {
+            if (code === 200) {
+                // API call successful, no need to revert
+            } else {
+                //API failed, now revert to old stage
+                setPosts(() =>
+                    posts.map(post =>
+                        post._id === taskId ? { ...post, stage: oldStage } : post
+                    )
+                );
+            }
+        });
     }
 
     const postingLanes = ["applied", "interview", "offer", "rejected"];

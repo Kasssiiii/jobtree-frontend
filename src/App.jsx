@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { LoginBar } from './components/LoginBar';
-import { NewPostingForm } from './components/NewPostingForm';
 import { PostList } from './components/PostList';
 
 export const App = () => {
@@ -16,9 +15,8 @@ export const App = () => {
       {userData ? (
         <>
           <div>Welcome back, {userData.name}!</div>
-          <NewPostingForm user={userData} refresh={refresh} />
           <div>Your recent postings:</div>
-          <PostList tick={tick} user={userData} />
+          <PostList tick={tick} user={userData} refresh={refresh} />
         </>
       ) : (
         <h1>Please log in.</h1>

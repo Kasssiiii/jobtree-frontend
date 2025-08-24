@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { sendPosting } from '../api';
 
-export const NewPostingForm = ({  user, refresh }) => {
+export const NewPostingForm = ({  user, refresh, setPosts }) => {
     const [title, setTitle] = useState('');
     const [company, setCompany] = useState('');
     const [loading, setLoading] = useState(false);
@@ -14,7 +14,7 @@ export const NewPostingForm = ({  user, refresh }) => {
                 setTitle('');
                 setCompany('');
                 setError('');
-                refresh();
+                setPosts(posts => [body, ...posts]);
             } else {
                 setError('Failed to create posting.');
             }

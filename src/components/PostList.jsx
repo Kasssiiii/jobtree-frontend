@@ -64,7 +64,7 @@ export const PostList = ({ user, tick, refresh }) => {
         <div className='post-list'>
             <DndContext onDragEnd={handleDragEnd}>
                 {postingLanes.map(lane => (
-                    <Lane key={lane} lane={lane} posts={posts.filter(post => post.stage === lane)} userData={user} refresh={refresh} />
+                    <Lane key={lane} lane={lane} posts={posts.filter(post => post.stage === lane)} userData={user} refresh={refresh} setPosts={setPosts} />
                 ))}
             </DndContext>
         </div>

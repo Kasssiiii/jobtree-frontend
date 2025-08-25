@@ -1,3 +1,22 @@
+// Networking contacts API
+export const getContacts = (token, response) => {
+  getResponse("contacts", { method: "GET" }, null, token, response);
+};
+
+export const addContact = (contact, token, response) => {
+  const params = { method: "POST" };
+  getResponse("contacts", params, contact, token, response);
+};
+
+export const updateContact = (id, contact, token, response) => {
+  const params = { method: "PUT" };
+  getResponse(`contacts/${id}` , params, contact, token, response);
+};
+
+export const deleteContact = (id, token, response) => {
+  const params = { method: "DELETE" };
+  getResponse(`contacts/${id}`, params, null, token, response);
+};
 const APIUri = "http://localhost:8080";
 
 const getResponse = async (path, params, body, authorization, response) => {

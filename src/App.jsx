@@ -4,10 +4,6 @@ import { PostList } from './components/PostList';
 
 export const App = () => {
   const [userData, setUserData] = useState(null);
-  const [tick, tock] = useState(false);
-  const refresh = () => {
-    tock(!tick);
-  };
 
   return (
     <>
@@ -16,7 +12,7 @@ export const App = () => {
         <>
           <div>Welcome back, {userData.name}!</div>
           <div>Your recent postings:</div>
-          <PostList tick={tick} user={userData} refresh={refresh} />
+          <PostList user={userData} />
         </>
       ) : (
         <h1>Please log in.</h1>

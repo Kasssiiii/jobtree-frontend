@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import { sendPosting } from '../api';
 
-export const NewPostingForm = ({  user, refresh, setPosts }) => {
+export const NewPostingForm = ({  user, setPosts }) => {
     const [title, setTitle] = useState('');
     const [company, setCompany] = useState('');
-    const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
 
     const handleSubmit = async (e) => {
@@ -46,8 +45,8 @@ export const NewPostingForm = ({  user, refresh, setPosts }) => {
                 </label>
             </div>
             {error && <div style={{ color: 'red' }}>{error}</div>}
-            <button type="submit" disabled={loading}>
-                {loading ? 'Submitting...' : 'Submit'}
+            <button type="submit">
+                Submit
             </button>
         </form>
     );

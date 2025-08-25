@@ -4,7 +4,7 @@ import { Lane } from './Lane';
 import './PostList.css';
 import { DndContext } from '@dnd-kit/core';
 
-export const PostList = ({ user, tick, refresh }) => {
+export const PostList = ({ user }) => {
     const [posts, setPosts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -21,7 +21,7 @@ export const PostList = ({ user, tick, refresh }) => {
             }
             setLoading(false);
         });
-    }, [tick]);
+    }, []);
 
     if (loading) return <div>Loading...</div>;
     if (error) return <div>{error}</div>;
@@ -64,7 +64,7 @@ export const PostList = ({ user, tick, refresh }) => {
         <div className='post-list'>
             <DndContext onDragEnd={handleDragEnd}>
                 {postingLanes.map(lane => (
-                    <Lane key={lane} lane={lane} posts={posts.filter(post => post.stage === lane)} userData={user} refresh={refresh} setPosts={setPosts} />
+                    <Lane key={lane} lane={lane} posts={posts.filter(post => post.stage === lane)} userData={user} setPosts={setPosts} />
                 ))}
             </DndContext>
         </div>

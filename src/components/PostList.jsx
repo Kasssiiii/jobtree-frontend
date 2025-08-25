@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useReducer, useState } from 'react';
 import { getUserPosts, updatePosting } from '../api';
+import { postOps } from '../postingOps';
 import { Lane } from './Lane';
 import './PostList.css';
 import { DndContext } from '@dnd-kit/core';
 
 export const PostList = ({ user }) => {
-    const [posts, setPosts] = useState([]);
+    const [posts, setPosts] = useReducer(postOps, []);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
@@ -14,7 +15,7 @@ export const PostList = ({ user }) => {
         setError(null);
         getUserPosts(user.token, (code, body) => {
             if (code === 200) {
-                setPosts(body);
+                setPosts({ action: 'set', postings: body });
                 setError(null);
             } else {
                 setError('Failed to fetch posts.');
@@ -37,22 +38,14 @@ export const PostList = ({ user }) => {
         // fetch old stage
         const oldStage = posts.find(post => post._id === taskId)?.stage;
 
-        setPosts(() =>
-            posts.map(post =>
-                post._id === taskId ? { ...post, stage: newStage } : post
-            )
-        );
+        setPosts({ action: 'setStage', _id: taskId, stage: newStage });
 
         updatePosting(taskId, null, null, newStage, user.token, (code, body) => {
             if (code === 200) {
                 // API call successful, no need to revert
             } else {
                 //API failed, now revert to old stage
-                setPosts(() =>
-                    posts.map(post =>
-                        post._id === taskId ? { ...post, stage: oldStage } : post
-                    )
-                );
+                setPosts({ action: 'setStage', _id: taskId, stage: oldStage });
             }
         });
     }

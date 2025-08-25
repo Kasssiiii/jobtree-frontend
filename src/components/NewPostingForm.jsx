@@ -13,7 +13,7 @@ export const NewPostingForm = ({  user, setPosts }) => {
                 setTitle('');
                 setCompany('');
                 setError('');
-                setPosts(posts => [body, ...posts]);
+                setPosts({ action: 'add', posting: body });
             } else {
                 setError('Failed to create posting.');
             }

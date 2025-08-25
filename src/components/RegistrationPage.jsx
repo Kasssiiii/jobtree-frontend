@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router';
-import { registerUser } from '../api';
+import { registerUser } from '../jobTreeApi';
 import { useUserStore } from '../userStore';
 import './RegistrationPage.css';
 

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import "./LoginBar.css";
 
-import { loginUser } from "../api";
+import { loginUser } from "../jobTreeApi";
 import { useUserStore } from "../userStore";
 
 export const LoginBar = () => {

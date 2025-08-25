@@ -1,5 +1,5 @@
 import React, { useEffect, useReducer, useState } from 'react';
-import { getUserPosts, updatePosting, postingLanes } from '../api';
+import { getUserPosts, updatePosting, postingLanes } from '../jobTreeApi';
 import { postOps } from '../postingOps';
 import { Lane } from './Lane';
 import './PostList.css';

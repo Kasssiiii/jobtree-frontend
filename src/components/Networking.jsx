@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import { useUserStore } from '../userStore';
 import { RegistrationPage } from './RegistrationPage';
 import { NavBar } from './NavBar';
-import { getContacts, addContact, updateContact, deleteContact, getUserPosts } from '../api';
+import { getContacts, addContact, updateContact, deleteContact, getUserPosts } from '../jobTreeApi';
 
 import './Networking.css';
 import { NetworkingEntry } from './NetworkingEntry';

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { sendPosting } from '../api';
+import { sendPosting } from '../jobTreeApi';
 import { useUserStore } from '../userStore';
 import './NewPostingForm.css';
 

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router';
-import { getPostingById, getContacts, updatePosting, deletePosting, postingLanes } from '../api';
+import { getPostingById, getContacts, updatePosting, deletePosting, postingLanes } from '../jobTreeApi';
 import { useUserStore } from '../userStore';
 import { NavBar } from './NavBar';
 

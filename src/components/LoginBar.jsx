@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import "./LoginBar.css";
 
-import { loginUser, registerUser } from "../api";
+import { loginUser } from "../api";
 import { useUserStore } from "../userStore";
 
 export const LoginBar = () => {
@@ -20,22 +20,6 @@ export const LoginBar = () => {
                     setErrorMessage("");
                 } else {
                     setErrorMessage("Login failed. Please try again.");
-                }
-                setUsername("");
-                setPassword("");
-            });
-        }
-    };
-
-    const handleRegister = () => {
-        // ensure user and password are set
-        if (username && password) {
-            registerUser(username, password, (code, data) => {
-                if (code === 200) {
-                    setUserData({ user: data.name, token: data.accessToken });
-                    setErrorMessage("");
-                } else {
-                    setErrorMessage("Registration failed. Please try again.");
                 }
                 setUsername("");
                 setPassword("");
@@ -69,7 +53,6 @@ export const LoginBar = () => {
                             placeholder="Enter your password"
                         />
                         <button onClick={handleLogin}>Login</button>
-                        <button onClick={handleRegister}>Register</button>
                     </>
                 )}
             </div>

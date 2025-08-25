@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router';
+import { registerUser } from '../api';
+import { useUserStore } from '../userStore';
 
 export const RegistrationPage = () => {
     const [form, setForm] = useState({
@@ -9,6 +12,8 @@ export const RegistrationPage = () => {
     });
 
     const [errors, setErrors] = useState({});
+    const navigate = useNavigate();
+    const { setUserData } = useUserStore();
 
     const handleChange = (e) => {
         setForm({ ...form, [e.target.name]: e.target.value });
@@ -31,8 +36,23 @@ export const RegistrationPage = () => {
             setErrors(validationErrors);
             return;
         }
-        // Submit logic here
-        alert('Registration successful!');
+        registerUser(form.username, form.password, form.email, (code, data) => {
+            if (code === 200) {
+                setUserData({ user: data.name, token: data.accessToken });
+                setErrors({});
+                setForm({
+                    username: "",
+                    email: "",
+                    password: "",
+                    confirmPassword: "",
+                });
+                navigate("/");
+            } else {
+                // Handle registration error
+                setErrors({ general: "Registration failed. " + JSON.stringify(data.error) });
+            }
+
+        });
     };
 
     return (
@@ -89,6 +109,7 @@ export const RegistrationPage = () => {
                         <div style={{ color: 'red' }}>{errors.confirmPassword}</div>
                     )}
                 </div>
+                {errors.general && <div style={{ color: 'red' }}>{errors.general}</div>}
                 <button type="submit">Register</button>
             </form>
         </div>

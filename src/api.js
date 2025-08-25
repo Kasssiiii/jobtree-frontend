@@ -35,10 +35,11 @@ export const loginUser = (username, password, response) => {
   getResponse(`users/${username}`, params, body, null, response);
 };
 
-export const registerUser = (username, password, response) => {
+export const registerUser = (username, password, email, response) => {
   const body = {
     user: username,
     password: password,
+    email: email
   };
   const params = {
     method: "POST",

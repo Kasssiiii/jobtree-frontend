@@ -48,7 +48,9 @@ export const PostingDetail = () => {
     if (error) return <div>{error}</div>;
     if (!posting) return <div>Posting not found.</div>;
 
-    const handleEdit = () => setEditMode(true);
+    const handleEdit = () => {
+        setEditMode(true);
+    };
     const handleCancel = () => {
         setEditMode(false);
         setForm({ jobTitle: posting.jobTitle, company: posting.company, stage: posting.stage });
@@ -88,36 +90,35 @@ export const PostingDetail = () => {
             <NavBar />
             <div className="posting-detail-container">
                 <h2>Posting Details</h2>
-                {editMode ? (
-                    <form onSubmit={handleSave} style={{ marginBottom: '1rem' }}>
-                        <div>
-                            <label>Job Title: </label>
-                            <input name="jobTitle" value={form.jobTitle} onChange={handleChange} required />
+                <form style={{ marginBottom: '1rem' }}>
+                    <div>
+                        <label>Job Title: </label>
+                        <input name="jobTitle" value={form.jobTitle} onChange={handleChange} required disabled={!editMode} />
+                    </div>
+                    <div>
+                        <label>Company: </label>
+                        <input name="company" value={form.company} onChange={handleChange} required disabled={!editMode} />
+                    </div>
+                    <div>
+                        <label>Stage: </label>
+                        <select name="stage" value={form.stage} onChange={handleChange} required disabled={!editMode}>
+                            {postingLanes.map(lane => (
+                                <option key={lane} value={lane}>{lane.charAt(0).toUpperCase() + lane.slice(1)}</option>
+                            ))}
+                        </select>
+                    </div>
+                    {editMode ? (
+                        <div className="posting-detail-form-actions">
+                            <button type="button" onClick={handleSave} disabled={loading}>Save</button>
+                            <button type="button" onClick={handleCancel} disabled={loading} >Cancel</button>
                         </div>
-                        <div>
-                            <label>Company: </label>
-                            <input name="company" value={form.company} onChange={handleChange} required />
+                    ) : (
+                        <div className="posting-detail-form-actions">
+                            <button type="button" onClick={handleEdit} className="edit-btn">Edit</button>
+                            <button type="button" onClick={handleDelete} className="delete-btn">Delete</button>
                         </div>
-                        <div>
-                            <label>Stage: </label>
-                            <select name="stage" value={form.stage} onChange={handleChange} required>
-                                {postingLanes.map(lane => (
-                                    <option key={lane} value={lane}>{lane.charAt(0).toUpperCase() + lane.slice(1)}</option>
-                                ))}
-                            </select>
-                        </div>
-                        <button type="submit" disabled={loading}>Save</button>
-                        <button type="button" onClick={handleCancel} disabled={loading} >Cancel</button>
-                    </form>
-                ) : (
-                    <>
-                        <div><strong>Job Title:</strong> {posting.jobTitle}</div>
-                        <div><strong>Company:</strong> {posting.company}</div>
-                        <div><strong>Stage:</strong> {posting.stage}</div>
-                        <button onClick={handleEdit} style={{ marginRight: '1rem' }}>Edit</button>
-                        <button onClick={handleDelete} style={{ background: '#e57373', color: '#fff' }}>Delete</button>
-                    </>
-                )}
+                    )}
+                </form>
                 <h3>Networking Entries for {posting.company}</h3>
                 {networkingEntries.length === 0 ? (
                     <div>No networking entries for this company.</div>

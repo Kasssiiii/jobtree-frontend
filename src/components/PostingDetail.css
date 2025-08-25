@@ -1,13 +1,66 @@
 @import url('../theme.css');
 
-.posting-detail-container {
-  max-width: 600px;
-  margin: 2rem auto;
-  background: var(--color-white);
-  border-radius: 12px;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.04);
-  padding: 2rem 1.5rem;
+.posting-detail-container select:disabled {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+.posting-detail-container input:disabled,
+.posting-detail-container select:disabled {
+  border: 1px solid var(--color-white);
+  background: var(--color-black);
   color: var(--color-black);
+  box-shadow: none;
+  outline: none;
+}
+.posting-detail-form-actions .edit-btn {
+  background: var(--color-blue);
+  color: var(--color-white);
+  border: none;
+  border-radius: 8px;
+  padding: 0.7rem 1.5rem;
+  font-size: 1.0rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-right: 1rem;
+}
+.posting-detail-form-actions .edit-btn:hover {
+  background: var(--color-green);
+}
+.posting-detail-form-actions .delete-btn {
+  background: var(--color-blue);
+  color: var(--color-white);
+  border: none;
+  border-radius: 8px;
+  padding: 0.7rem 1.5rem;
+  font-size: 1.0rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.posting-detail-form-actions .delete-btn:hover {
+  background: var(--color-error);
+}
+/* Make Save and Cancel buttons appear next to each other */
+.posting-detail-form-actions {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.posting-detail-container {
+  max-width: 900px;
+  margin: 2.5rem auto;
+  background: var(--color-white);
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.27);
+  padding: 3rem 2.5rem;
+  color: var(--color-black);
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 }
 
 .posting-detail-container h2 {
@@ -24,63 +77,78 @@
 }
 
 .posting-detail-container form {
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1.5rem;
+  padding: 2rem 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.24);
+  box-sizing: border-box;
+  max-width: 100%;
 }
 
 .posting-detail-container label {
   font-weight: 500;
-  margin-bottom: 0.3rem;
+  margin-bottom: 0.5rem;
+  display: block;
+  font-size: 1.0rem;
 }
 
 .posting-detail-container input,
 .posting-detail-container select {
-  padding: 0.5rem;
-  border-radius: 6px;
+  padding: 0.7rem 1rem;
+  border-radius: 8px;
   border: 1px solid var(--color-blue-mid);
-  font-size: 1rem;
+  font-size: 1.0rem;
   color: var(--color-black);
   background: var(--color-white);
+  margin-bottom: 1rem;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .posting-detail-container button {
   background: var(--color-green);
   color: var(--color-black);
   border: none;
-  border-radius: 6px;
-  padding: 0.5rem 1.2rem;
-  font-size: 1rem;
+  border-radius: 8px;
+  padding: 0.7rem 1.5rem;
+  font-size: 1.0rem;
   font-weight: 500;
   cursor: pointer;
   transition: background 0.2s;
-  margin-right: 0.7rem;
+  margin-right: 1rem;
+  margin-top: 0.5rem;
 }
 .posting-detail-container button:hover {
   background: var(--color-blue);
 }
 
-.posting-detail-container .delete-btn {
-  background: var(--color-error);
-  color: var(--color-white);
-}
-
 .posting-detail-container ul {
   list-style: none;
   padding: 0;
+  margin-top: 1.5rem;
 }
 
 .posting-detail-container li {
   background: var(--color-blue-light);
-  border-radius: 6px;
-  margin-bottom: 0.7rem;
-  padding: 0.7rem 1rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  padding: 1rem 1.5rem;
   color: var(--color-black);
+  font-size: 1.05rem;
 }
 
 @media (max-width: 600px) {
   .posting-detail-container {
     padding: 1rem 0.5rem;
+    max-width: 100%;
+  }
+  .posting-detail-container form {
+    padding: 1rem 0.5rem;
+  }
+  .posting-detail-container li {
+    padding: 0.7rem 0.5rem;
   }
 }

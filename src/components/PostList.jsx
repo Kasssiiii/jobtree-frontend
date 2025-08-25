@@ -4,16 +4,18 @@ import { postOps } from '../postingOps';
 import { Lane } from './Lane';
 import './PostList.css';
 import { DndContext } from '@dnd-kit/core';
+import { useUserStore } from '../userStore';
 
-export const PostList = ({ user }) => {
+export const PostList = () => {
     const [posts, setPosts] = useReducer(postOps, []);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const { userData } = useUserStore();
 
     useEffect(() => {
         setLoading(true);
         setError(null);
-        getUserPosts(user.token, (code, body) => {
+        getUserPosts(userData.token, (code, body) => {
             if (code === 200) {
                 setPosts({ action: 'set', postings: body });
                 setError(null);
@@ -40,7 +42,7 @@ export const PostList = ({ user }) => {
 
         setPosts({ action: 'setStage', _id: taskId, stage: newStage });
 
-        updatePosting(taskId, null, null, newStage, user.token, (code, body) => {
+        updatePosting(taskId, null, null, newStage, userData.token, (code, body) => {
             if (code === 200) {
                 // API call successful, no need to revert
             } else {
@@ -57,7 +59,7 @@ export const PostList = ({ user }) => {
         <div className='post-list'>
             <DndContext onDragEnd={handleDragEnd}>
                 {postingLanes.map(lane => (
-                    <Lane key={lane} lane={lane} posts={posts.filter(post => post.stage === lane)} userData={user} setPosts={setPosts} />
+                    <Lane key={lane} lane={lane} posts={posts.filter(post => post.stage === lane)} setPosts={setPosts} />
                 ))}
             </DndContext>
         </div>

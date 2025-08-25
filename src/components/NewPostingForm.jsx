@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
 import { sendPosting } from '../api';
+import { useUserStore } from '../userStore';
 
-export const NewPostingForm = ({  user, setPosts }) => {
+export const NewPostingForm = ({ setPosts }) => {
     const [title, setTitle] = useState('');
     const [company, setCompany] = useState('');
     const [error, setError] = useState('');
+    const { userData } = useUserStore();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        sendPosting(title, company, user.token, (code, body) => {
+        sendPosting(title, company, userData.token, (code, body) => {
             if (code === 200) {
                 setTitle('');
                 setCompany('');

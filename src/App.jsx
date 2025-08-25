@@ -1,18 +1,19 @@
 import React, { useState } from 'react';
 import { LoginBar } from './components/LoginBar';
 import { PostList } from './components/PostList';
+import { useUserStore } from './userStore';
 
 export const App = () => {
-  const [userData, setUserData] = useState(null);
+  const { userData } = useUserStore();
 
   return (
     <>
-      <LoginBar setUserData={setUserData} userData={userData} />
+      <LoginBar />
       {userData ? (
         <>
           <div>Welcome back, {userData.name}!</div>
           <div>Your recent postings:</div>
-          <PostList user={userData} />
+          <PostList />
         </>
       ) : (
         <h1>Please log in.</h1>

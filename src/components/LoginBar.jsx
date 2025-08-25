@@ -3,11 +3,13 @@ import React, { useState } from "react";
 import "./LoginBar.css";
 
 import { loginUser, registerUser } from "../api";
+import { useUserStore } from "../userStore";
 
-export const LoginBar = ({ setUserData, userData }) => {
+export const LoginBar = () => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
+    const { setUserData, clearUserData, userData } = useUserStore();
 
     const handleLogin = () => {
         // ensure user and password are set
@@ -48,7 +50,7 @@ export const LoginBar = ({ setUserData, userData }) => {
                 {userData ? (
                     <>
                         <span>Welcome, {userData.user}!</span>
-                        <button onClick={() => setUserData(null)}>Logout</button>
+                        <button onClick={() => clearUserData()}>Logout</button>
                     </>
                 ) : (
                     <>

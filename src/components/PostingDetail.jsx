@@ -4,6 +4,9 @@ import { getPostingById, getContacts, updatePosting, deletePosting, postingLanes
 import { useUserStore } from '../userStore';
 import { NavBar } from './NavBar';
 
+import './PostingDetail.css';
+import { NetworkingEntry } from './NetworkingEntry';
+
 export const PostingDetail = () => {
     const { id } = useParams();
     const navigate = useNavigate();
@@ -37,7 +40,10 @@ export const PostingDetail = () => {
         });
     }, [id, userData]);
 
-    if (!userData) return <div>Please log in.</div>;
+
+    if (!userData) {
+        navigate('/');
+    };
     if (loading) return <div>Loading...</div>;
     if (error) return <div>{error}</div>;
     if (!posting) return <div>Posting not found.</div>;
@@ -80,7 +86,7 @@ export const PostingDetail = () => {
     return (
         <>
             <NavBar />
-            <div style={{ padding: '2rem' }}>
+            <div className="posting-detail-container">
                 <h2>Posting Details</h2>
                 {editMode ? (
                     <form onSubmit={handleSave} style={{ marginBottom: '1rem' }}>
@@ -101,7 +107,7 @@ export const PostingDetail = () => {
                             </select>
                         </div>
                         <button type="submit" disabled={loading}>Save</button>
-                        <button type="button" onClick={handleCancel} disabled={loading} style={{ marginLeft: '1rem' }}>Cancel</button>
+                        <button type="button" onClick={handleCancel} disabled={loading} >Cancel</button>
                     </form>
                 ) : (
                     <>
@@ -116,13 +122,11 @@ export const PostingDetail = () => {
                 {networkingEntries.length === 0 ? (
                     <div>No networking entries for this company.</div>
                 ) : (
-                    <ul>
+                    <div>
                         {networkingEntries.map(entry => (
-                            <li key={entry._id}>
-                                <strong>{entry.name}</strong>: {entry.notes}
-                            </li>
+                            <NetworkingEntry key={entry._id} contact={entry} />
                         ))}
-                    </ul>
+                    </div>
                 )}
             </div>
         </>

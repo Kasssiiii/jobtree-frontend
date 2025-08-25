@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { sendPosting } from '../api';
 import { useUserStore } from '../userStore';
+import './NewPostingForm.css';
 
 export const NewPostingForm = ({ setPosts }) => {
     const [title, setTitle] = useState('');
@@ -23,7 +24,7 @@ export const NewPostingForm = ({ setPosts }) => {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form className="new-posting-form" onSubmit={handleSubmit}>
             <div>
                 <label>
                     Job Title:
@@ -46,9 +47,9 @@ export const NewPostingForm = ({ setPosts }) => {
                     />
                 </label>
             </div>
-            {error && <div style={{ color: 'red' }}>{error}</div>}
+            {error && <div className="error">{error}</div>}
             <button type="submit">
-                Submit
+                Add
             </button>
         </form>
     );

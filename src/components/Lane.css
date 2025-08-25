@@ -1,19 +1,38 @@
-.lane {
-    border: 1px solid #7d8d44;
-    border-radius: 4px;
-    padding: 12px;
-    margin: 8px 0;
-    background-color: #f9f9f9;
-    width: 20%;
+@import url('../theme.css');
 
+.lane {
+    border: 2px solid var(--color-blue);
+    border-radius: 10px;
+    padding: 16px;
+    margin: 12px 8px;
+    background-color: var(--color-blue-light);
+    width: 24%;
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
+    min-width: 140px;
+    color: var(--color-black);
 }
 
 .lane h3 {
-    margin: 0 0 8px;
+    margin: 0 0 12px;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--color-black);
+    letter-spacing: 0.5px;
 }
 
 .lane .posting {
-    margin: 4px 0;
+    margin: 6px 0;
+}
+
+@media (max-width: 900px) {
+    .lane {
+        width: 100%;
+        margin: 8px 0;
+        padding: 8px;
+    }
+    .lane h3 {
+        font-size: 1.1rem;
+    }
 }

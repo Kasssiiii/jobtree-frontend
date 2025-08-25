@@ -4,20 +4,22 @@ import { useDraggable } from '@dnd-kit/core';
 import { Link } from 'react-router';
 
 export const Posting = ({ post }) => {
-    const { attributes, listeners, setNodeRef, transform } = useDraggable({
+    const { attributes, listeners, setNodeRef, transform, isDragging } = useDraggable({
         id: post._id,
     });
-    const style = transform
-        ? {
-            transform: `translate(${transform.x}px, ${transform.y}px)`,
-        }
-        : undefined;
+    const style = {
+        ...(transform ? { transform: `translate(${transform.x}px, ${transform.y}px)` } : {}),
+        ...(isDragging ? { zIndex: 1000, boxShadow: '0 4px 24px rgba(0,0,0,0.58)' } : {}),
+        position: 'relative',
+    };
 
     return (
-            <div style={style} className='posting' key={post._id} ref={setNodeRef} {...attributes} {...listeners}>
-                <h4>{post.jobTitle}</h4>
-                <p>{post.company}</p>
-                <Link to={`/postings/${post._id}`} style={{ fontSize: '0.9em', marginTop: '8px', display: 'inline-block', background: '#e0e0e0', padding: '4px 8px', borderRadius: '4px', textDecoration: 'none', color: '#333' }}>Details</Link>
-            </div>
+        <div style={style} className='posting' key={post._id} ref={setNodeRef} {...attributes} {...listeners}>
+            <h4>{post.jobTitle}</h4>
+            <p>{post.company}</p>
+            <Link to={`/postings/${post._id}`} className="details-link" style={isDragging ? { zIndex: 1 } : {}}>
+                Details
+            </Link>
+        </div>
     );
 };

@@ -65,13 +65,15 @@ export const PostList = () => {
 
     // return four Lane components each getting their respective posts
     return (
-        <div className='post-list'>
+        <>
             <NavBar />
-            <DndContext onDragEnd={handleDragEnd}>
-                {postingLanes.map(lane => (
-                    <Lane key={lane} lane={lane} posts={posts.filter(post => post.stage === lane)} setPosts={setPosts} />
-                ))}
-            </DndContext>
-        </div>
+            <div className='post-list'>
+                <DndContext onDragEnd={handleDragEnd}>
+                    {postingLanes.map(lane => (
+                        <Lane key={lane} lane={lane} posts={posts.filter(post => post.stage === lane)} setPosts={setPosts} />
+                    ))}
+                </DndContext>
+            </div>
+        </>
     );
 };

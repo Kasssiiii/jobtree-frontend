@@ -1,0 +1,58 @@
+@import url('../theme.css');
+
+.new-posting-form {
+  background: var(--color-white);
+  border-radius: 10px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+  padding: 1.2rem 1rem;
+  margin-bottom: 1rem;
+  color: var(--color-black);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.new-posting-form label {
+  font-weight: 500;
+  margin-bottom: 0.3rem;
+}
+
+.new-posting-form input,
+.new-posting-form select {
+  padding: 0.5rem;
+  border-radius: 6px;
+  border: 1px solid var(--color-blue-mid);
+  font-size: 1rem;
+  color: var(--color-black);
+  background: var(--color-white);
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.new-posting-form button {
+  background: var(--color-green);
+  color: var(--color-black);
+  border: none;
+  border-radius: 6px;
+  padding: 0.5rem 1.2rem;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.new-posting-form button:hover {
+  background: var(--color-blue);
+}
+
+.new-posting-form .error {
+  color: var(--color-error);
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+@media (max-width: 600px) {
+  .new-posting-form {
+    padding: 0.7rem 0.3rem;
+  }
+}

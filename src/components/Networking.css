@@ -1,0 +1,120 @@
+@import url('../theme.css');
+
+.networking-page {
+  max-width: 600px;
+  margin: 0 auto;
+  background: var(--color-white);
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+  padding: 2rem 1.5rem;
+  color: var(--color-black);
+}
+
+.networking-page h1 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+}
+
+.networking-page form {
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.networking-form-row {
+  display: flex;
+  gap: 1rem;
+}
+
+.networking-form-row > div {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.networking-notes-row {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.networking-notes-row textarea {
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+@media (max-width: 600px) {
+  .networking-form-row {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
+
+.networking-form-row {
+  display: flex;
+  gap: 1rem;
+}
+
+.networking-form-row > div {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 600px) {
+  .networking-form-row {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
+
+.networking-page label {
+  font-weight: 500;
+  margin-bottom: 0.3rem;
+}
+
+.networking-page input,
+.networking-page textarea {
+  padding: 0.5rem;
+  border-radius: 6px;
+  border: 1px solid var(--color-blue-mid);
+  font-size: 1rem;
+  color: var(--color-black);
+  background: var(--color-white);
+}
+
+.networking-page button {
+  background: var(--color-green);
+  color: var(--color-black);
+  border: none;
+  border-radius: 6px;
+  padding: 0.5rem 1.2rem;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.networking-page button:hover {
+  background: var(--color-blue);
+}
+
+.networking-page .error {
+  color: var(--color-error);
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+.networking-page h2 {
+  font-size: 1.3rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+@media (max-width: 600px) {
+  .networking-page {
+    padding: 1rem 0.5rem;
+  }
+}

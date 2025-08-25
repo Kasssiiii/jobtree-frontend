@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router';
 import { registerUser } from '../api';
 import { useUserStore } from '../userStore';
+import './RegistrationPage.css';
 
 export const RegistrationPage = () => {
     const [form, setForm] = useState({
@@ -48,69 +49,49 @@ export const RegistrationPage = () => {
                 });
                 navigate("/");
             } else {
-                // Handle registration error
                 setErrors({ general: "Registration failed. " + JSON.stringify(data.error) });
             }
-
         });
     };
 
     return (
-        <div style={{ maxWidth: 400, margin: '0 auto' }}>
+        <div className="registration-page">
             <h2>Register</h2>
             <form onSubmit={handleSubmit}>
-                <div>
-                    <label>
-                        Username:
-                        <input
-                            type="text"
-                            name="username"
-                            value={form.username}
-                            onChange={handleChange}
-                        />
-                    </label>
-                    {errors.username && <div style={{ color: 'red' }}>{errors.username}</div>}
-                </div>
-                <div>
-                    <label>
-                        Email:
-                        <input
-                            type="email"
-                            name="email"
-                            value={form.email}
-                            onChange={handleChange}
-                        />
-                    </label>
-                    {errors.email && <div style={{ color: 'red' }}>{errors.email}</div>}
-                </div>
-                <div>
-                    <label>
-                        Password:
-                        <input
-                            type="password"
-                            name="password"
-                            value={form.password}
-                            onChange={handleChange}
-                        />
-                    </label>
-                    {errors.password && <div style={{ color: 'red' }}>{errors.password}</div>}
-                </div>
-                <div>
-                    <label>
-                        Confirm Password:
-                        <input
-                            type="password"
-                            name="confirmPassword"
-                            value={form.confirmPassword}
-                            onChange={handleChange}
-                        />
-                    </label>
-                    {errors.confirmPassword && (
-                        <div style={{ color: 'red' }}>{errors.confirmPassword}</div>
-                    )}
-                </div>
-                {errors.general && <div style={{ color: 'red' }}>{errors.general}</div>}
+                <label>Username:</label>
+                <input
+                    type="text"
+                    name="username"
+                    value={form.username}
+                    onChange={handleChange}
+                />
+                {errors.username && <div className="error">{errors.username}</div>}
+                <label>Email:</label>
+                <input
+                    type="email"
+                    name="email"
+                    value={form.email}
+                    onChange={handleChange}
+                />
+                {errors.email && <div className="error">{errors.email}</div>}
+                <label>Password:</label>
+                <input
+                    type="password"
+                    name="password"
+                    value={form.password}
+                    onChange={handleChange}
+                />
+                {errors.password && <div className="error">{errors.password}</div>}
+                <label>Confirm Password:</label>
+                <input
+                    type="password"
+                    name="confirmPassword"
+                    value={form.confirmPassword}
+                    onChange={handleChange}
+                />
+                {errors.confirmPassword && <div className="error">{errors.confirmPassword}</div>}
                 <button type="submit">Register</button>
+                {errors.general && <div className="error">{errors.general}</div>}
             </form>
         </div>
     );

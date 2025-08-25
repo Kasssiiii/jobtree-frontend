@@ -1,0 +1,64 @@
+@import url('../theme.css');
+
+.registration-page {
+  max-width: 400px;
+  margin: 2rem auto;
+  background: var(--color-black);
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+  padding: 2rem 1.5rem;
+  color: var(--color-white);
+}
+
+.registration-page h2 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+}
+
+.registration-page form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.registration-page label {
+  font-weight: 500;
+  margin-bottom: 0.3rem;
+}
+
+.registration-page input {
+  padding: 0.5rem;
+  border-radius: 6px;
+  border: 1px solid var(--color-blue-mid);
+  font-size: 1rem;
+  color: var(--color-black);
+  background: var(--color-white);
+}
+
+.registration-page button {
+  background: var(--color-green);
+  color: var(--color-black);
+  border: none;
+  border-radius: 6px;
+  padding: 0.5rem 1.2rem;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.registration-page button:hover {
+  background: var(--color-blue);
+}
+
+.registration-page .error {
+  color: var(--color-error);
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 600px) {
+  .registration-page {
+    padding: 1rem 0.5rem;
+  }
+}

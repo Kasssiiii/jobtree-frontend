@@ -4,6 +4,9 @@ import { RegistrationPage } from './RegistrationPage';
 import { NavBar } from './NavBar';
 import { getContacts, addContact, updateContact, deleteContact, getUserPosts } from '../api';
 
+import './Networking.css';
+import { NetworkingEntry } from './NetworkingEntry';
+
 export const Networking = () => {
     const { userData } = useUserStore();
     const [contacts, setContacts] = React.useState([]);
@@ -96,52 +99,54 @@ export const Networking = () => {
     return (
         <>
             <NavBar />
-            <div>
+            <div className="networking-page">
                 <h1>Networking Page</h1>
-                <form onSubmit={handleSubmit} style={{ marginBottom: '2rem' }}>
-                    <div>
-                        <label>Name: </label>
-                        <input name="name" value={form.name} onChange={handleChange} required />
+                <form onSubmit={handleSubmit}>
+                    <div className="networking-form-row">
+                        <div>
+                            <label>Name: </label>
+                            <input name="name" value={form.name} onChange={handleChange} required />
+                        </div>
+                        <div>
+                            <label>Company: </label>
+                            <input
+                                name="company"
+                                list="company-list"
+                                value={form.company}
+                                onChange={handleChange}
+                                required
+                                placeholder="Type or select company"
+                            />
+                            <datalist id="company-list">
+                                {companies.map((company) => (
+                                    <option key={company} value={company} />
+                                ))}
+                            </datalist>
+                        </div>
                     </div>
-                    <div>
-                        <label>Company: </label>
-                        <input
-                            name="company"
-                            list="company-list"
-                            value={form.company}
-                            onChange={handleChange}
-                            required
-                            placeholder="Type or select company"
-                        />
-                        <datalist id="company-list">
-                            {companies.map((company) => (
-                                <option key={company} value={company} />
-                            ))}
-                        </datalist>
-                    </div>
-                    <div>
+                    <div className="networking-notes-row">
                         <label>Notes: </label>
                         <textarea name="notes" value={form.notes} onChange={handleChange} rows={5} />
                     </div>
                     <button type="submit" disabled={loading}>{editId !== null ? 'Update Contact' : 'Add Contact'}</button>
                 </form>
-                {error && <div style={{ color: 'red' }}>{error}</div>}
+                {error && <div className="error">{error}</div>}
                 <h2>Contacts</h2>
                 {loading ? (
                     <p>Loading...</p>
                 ) : contacts.length === 0 ? (
                     <p>No contacts added yet.</p>
                 ) : (
-                    <ul style={{ listStyle: 'none', padding: 0 }}>
+                    <div>
                         {contacts.map((contact) => (
-                            <li key={contact._id} style={{ border: '1px solid #ccc', marginBottom: '1rem', padding: '1rem' }}>
-                                <strong>{contact.name}</strong> @ {contact.company}
-                                <div><em>{contact.notes}</em></div>
-                                <button onClick={() => handleEdit(contact)} style={{ marginRight: '1rem' }}>Edit</button>
-                                <button onClick={() => handleDelete(contact._id)}>Delete</button>
-                            </li>
+                            <NetworkingEntry
+                                key={contact._id}
+                                contact={contact}
+                                onEdit={handleEdit}
+                                onDelete={handleDelete}
+                            />
                         ))}
-                    </ul>
+                    </div>
                 )}
             </div>
         </>

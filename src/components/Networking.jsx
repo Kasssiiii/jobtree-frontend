@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import { useUserStore } from '../userStore';
 import { RegistrationPage } from './RegistrationPage';
 import { NavBar } from './NavBar';
-import { getContacts, addContact, updateContact, deleteContact } from '../api';
+import { getContacts, addContact, updateContact, deleteContact, getUserPosts } from '../api';
 
 export const Networking = () => {
     const { userData } = useUserStore();
@@ -11,6 +11,7 @@ export const Networking = () => {
     const [editId, setEditId] = React.useState(null);
     const [loading, setLoading] = React.useState(false);
     const [error, setError] = React.useState(null);
+    const [companies, setCompanies] = React.useState([]);
 
     useEffect(() => {
         if (!userData || !userData.token) return;
@@ -21,6 +22,14 @@ export const Networking = () => {
                 setContacts(data);
             } else {
                 setError(data.error || 'Failed to fetch contacts');
+            }
+        });
+        // Fetch user's postings to get companies
+        getUserPosts(userData.token, (status, data) => {
+            if (status === 200 && Array.isArray(data)) {
+                // Extract unique companies
+                const uniqueCompanies = [...new Set(data.map(post => post.company).filter(Boolean))];
+                setCompanies(uniqueCompanies);
             }
         });
     }, [userData]);
@@ -96,7 +105,19 @@ export const Networking = () => {
                     </div>
                     <div>
                         <label>Company: </label>
-                        <input name="company" value={form.company} onChange={handleChange} required />
+                        <input
+                            name="company"
+                            list="company-list"
+                            value={form.company}
+                            onChange={handleChange}
+                            required
+                            placeholder="Type or select company"
+                        />
+                        <datalist id="company-list">
+                            {companies.map((company) => (
+                                <option key={company} value={company} />
+                            ))}
+                        </datalist>
                     </div>
                     <div>
                         <label>Notes: </label>

@@ -1,5 +1,5 @@
 import React, { useEffect, useReducer, useState } from 'react';
-import { getUserPosts, updatePosting } from '../api';
+import { getUserPosts, updatePosting, postingLanes } from '../api';
 import { postOps } from '../postingOps';
 import { Lane } from './Lane';
 import './PostList.css';
@@ -60,7 +60,6 @@ export const PostList = () => {
         });
     }
 
-    const postingLanes = ["applied", "interview", "offer", "rejected"];
 
     
 

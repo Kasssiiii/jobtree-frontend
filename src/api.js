@@ -1,3 +1,13 @@
+// Shared list of posting lanes
+export const postingLanes = ["applied", "interview", "offer", "rejected"];
+// Delete a posting by id
+export const deletePosting = (id, token, response) => {
+  getResponse(`postings/${id}`, { method: "DELETE" }, null, token, response);
+};
+// Get a single posting by id
+export const getPostingById = (id, token, response) => {
+  getResponse(`postings/${id}`, { method: "GET" }, null, token, response);
+};
 // Networking contacts API
 export const getContacts = (token, response) => {
   getResponse("contacts", { method: "GET" }, null, token, response);

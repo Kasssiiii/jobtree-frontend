@@ -1,22 +1,21 @@
 import React, { useState } from 'react';
 import { LoginBar } from './components/LoginBar';
 import { PostList } from './components/PostList';
-import { useUserStore } from './userStore';
+import { BrowserRouter, Route, Routes } from "react-router";
+import { RegistrationPage } from './components/RegistrationPage';
+import { Networking } from './components/Networking';
 
 export const App = () => {
-  const { userData } = useUserStore();
-
   return (
     <>
       <LoginBar />
-      {userData ? (
-        <>
-          <div>Your recent postings:</div>
-          <PostList />
-        </>
-      ) : (
-        <h1>Please log in.</h1>
-      )}
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<PostList />} />
+          <Route path="/welcome" element={<RegistrationPage />} />
+          <Route path="/networking" element={<Networking />} />
+        </Routes>
+      </BrowserRouter>
     </>
   )
 }

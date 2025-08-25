@@ -5,6 +5,8 @@ import { Lane } from './Lane';
 import './PostList.css';
 import { DndContext } from '@dnd-kit/core';
 import { useUserStore } from '../userStore';
+import { RegistrationPage } from './RegistrationPage';
+import { NavBar } from './NavBar';
 
 export const PostList = () => {
     const [posts, setPosts] = useReducer(postOps, []);
@@ -12,7 +14,10 @@ export const PostList = () => {
     const [error, setError] = useState(null);
     const { userData } = useUserStore();
 
+    
+
     useEffect(() => {
+        if (!userData) return;
         setLoading(true);
         setError(null);
         getUserPosts(userData.token, (code, body) => {
@@ -24,11 +29,14 @@ export const PostList = () => {
             }
             setLoading(false);
         });
-    }, []);
+    }, [userData]);
+
+    if (!userData) {
+        return <RegistrationPage />;
+    }
 
     if (loading) return <div>Loading...</div>;
     if (error) return <div>{error}</div>;
-    if (posts.length === 0) return <div>No posts found.</div>;
 
     //not dropping if not over drop zone
     function handleDragEnd(event) {
@@ -54,9 +62,12 @@ export const PostList = () => {
 
     const postingLanes = ["applied", "interview", "offer", "rejected"];
 
+    
+
     // return four Lane components each getting their respective posts
     return (
         <div className='post-list'>
+            <NavBar />
             <DndContext onDragEnd={handleDragEnd}>
                 {postingLanes.map(lane => (
                     <Lane key={lane} lane={lane} posts={posts.filter(post => post.stage === lane)} setPosts={setPosts} />

@@ -11,7 +11,6 @@ export const App = () => {
       <LoginBar />
       {userData ? (
         <>
-          <div>Welcome back, {userData.name}!</div>
           <div>Your recent postings:</div>
           <PostList />
         </>

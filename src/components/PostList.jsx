@@ -66,15 +66,30 @@ export const PostList = () => {
 
     
 
-    // return four Lane components each getting their respective posts
+    // return four Lane components each getting their respective posts, sorted by lastStageChange descending
     return (
         <>
             <NavBar />
             <div className='post-list'>
                 <DndContext onDragEnd={handleDragEnd}>
-                    {postingLanes.map(lane => (
-                        <Lane key={lane} lane={lane} posts={posts.filter(post => post.stage === lane)} setPosts={setPosts} allCompanies={companies}/>
-                    ))}
+                    {postingLanes.map(lane => {
+                        const lanePosts = posts
+                            .filter(post => post.stage === lane)
+                            .sort((a, b) => {
+                                const aTime = a.lastStageChange ? new Date(a.lastStageChange).getTime() : 0;
+                                const bTime = b.lastStageChange ? new Date(b.lastStageChange).getTime() : 0;
+                                return bTime - aTime;
+                            });
+                        return (
+                            <Lane
+                                key={lane}
+                                lane={lane}
+                                posts={lanePosts}
+                                setPosts={setPosts}
+                                allCompanies={companies}
+                            />
+                        );
+                    })}
                 </DndContext>
             </div>
         </>

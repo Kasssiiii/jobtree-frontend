@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import moment from 'moment';
 import { useParams, useNavigate } from 'react-router';
 import { getPostingById, getContacts, updatePosting, deletePosting, postingLanes } from '../jobTreeApi';
 import { useUserStore } from '../userStore';
@@ -90,6 +91,14 @@ export const PostingDetail = () => {
             <NavBar />
             <div className="posting-detail-container">
                 <h2>Posting Details</h2>
+                <div className="posting-timestamps">
+                    <div>
+                        <strong>Created:</strong> {posting.createdAt ? moment(posting.createdAt).format('YYYY-MM-DD HH:mm:ss') : 'N/A'}
+                    </div>
+                    <div>
+                        <strong>Last Stage Change:</strong> {posting.lastStageChange ? moment(posting.lastStageChange).format('YYYY-MM-DD HH:mm:ss') : 'N/A'}
+                    </div>
+                </div>
                 <form style={{ marginBottom: '1rem' }}>
                     <div>
                         <label>Job Title: </label>

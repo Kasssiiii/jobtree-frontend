@@ -91,14 +91,6 @@ export const PostingDetail = () => {
             <NavBar />
             <div className="posting-detail-container">
                 <h2>Posting Details</h2>
-                <div className="posting-timestamps-details">
-                    <div>
-                        <strong>Created:</strong> {posting.createdAt ? moment(posting.createdAt).format('YYYY-MM-DD HH:mm:ss') : 'N/A'}
-                    </div>
-                    <div>
-                        <strong>Last Stage Change:</strong> {posting.lastStageChange ? moment(posting.lastStageChange).format('YYYY-MM-DD HH:mm:ss') : 'N/A'}
-                    </div>
-                </div>
                 <form style={{ marginBottom: '1rem' }}>
                     <div>
                         <label>Job Title: </label>
@@ -115,6 +107,16 @@ export const PostingDetail = () => {
                                 <option key={lane} value={lane}>{lane.charAt(0).toUpperCase() + lane.slice(1)}</option>
                             ))}
                         </select>
+                    </div>
+                    <div className="posting-timestamps-details">
+                        <div className="posting-timestamp-field">
+                            <label>Created:</label>
+                            <span>{posting.createdAt ? moment(posting.createdAt).format('YYYY-MM-DD HH:mm:ss') : 'N/A'}</span>
+                        </div>
+                        <div className="posting-timestamp-field">
+                            <label>Last Stage Change:</label>
+                            <span>{posting.lastStageChange ? moment(posting.lastStageChange).format('YYYY-MM-DD HH:mm:ss') : 'N/A'}</span>
+                        </div>
                     </div>
                     {editMode ? (
                         <div className="posting-detail-form-actions">

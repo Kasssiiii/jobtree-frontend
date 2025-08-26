@@ -7,7 +7,7 @@
     border-radius: 8px;
     padding: 14px;
     margin: 10px 0;
-    background-color: var(--color-green);
+    background: linear-gradient(135deg, rgba(76, 175, 80, 0.68) 60%, rgba(187, 222, 251, 0.42) 100%);
     transition: box-shadow 0.25s cubic-bezier(.4,1.4,.6,1), transform 0.22s cubic-bezier(.4,1.4,.6,1);
 }
 

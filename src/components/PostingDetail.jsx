@@ -91,7 +91,7 @@ export const PostingDetail = () => {
             <NavBar />
             <div className="posting-detail-container">
                 <h2>Posting Details</h2>
-                <div className="posting-timestamps">
+                <div className="posting-timestamps-details">
                     <div>
                         <strong>Created:</strong> {posting.createdAt ? moment(posting.createdAt).format('YYYY-MM-DD HH:mm:ss') : 'N/A'}
                     </div>

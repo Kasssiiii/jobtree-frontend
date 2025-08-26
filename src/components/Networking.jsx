@@ -100,7 +100,6 @@ export const Networking = () => {
         <>
             <NavBar />
             <div className="networking-page">
-                <h1>Your Contacts</h1>
                 <form onSubmit={handleSubmit}>
                     <div className="networking-form-row">
                         <div>
@@ -131,23 +130,25 @@ export const Networking = () => {
                     <button type="submit" disabled={loading}>{editId !== null ? 'Update Contact' : 'Add Contact'}</button>
                 </form>
                 {error && <div className="error">{error}</div>}
-                <h2>Contacts</h2>
-                {loading ? (
-                    <p>Loading...</p>
-                ) : contacts.length === 0 ? (
-                    <p>No contacts added yet.</p>
-                ) : (
-                    <div>
-                        {contacts.map((contact) => (
-                            <NetworkingEntry
-                                key={contact._id}
-                                contact={contact}
-                                onEdit={handleEdit}
-                                onDelete={handleDelete}
-                            />
-                        ))}
-                    </div>
-                )}
+                <h1>Your Contacts</h1>
+                <div className="networking-contacts-section">
+                  {loading ? (
+                      <p>Loading...</p>
+                  ) : contacts.length === 0 ? (
+                      <p>No contacts added yet.</p>
+                  ) : (
+                      <div className="networking-contacts-grid">
+                          {contacts.map((contact) => (
+                              <NetworkingEntry
+                                  key={contact._id}
+                                  contact={contact}
+                                  onEdit={handleEdit}
+                                  onDelete={handleDelete}
+                              />
+                          ))}
+                      </div>
+                  )}
+                </div>
             </div>
         </>
     );

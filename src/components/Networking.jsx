@@ -100,7 +100,7 @@ export const Networking = () => {
         <>
             <NavBar />
             <div className="networking-page">
-                <h1>Networking Page</h1>
+                <h1>Your Contacts</h1>
                 <form onSubmit={handleSubmit}>
                     <div className="networking-form-row">
                         <div>

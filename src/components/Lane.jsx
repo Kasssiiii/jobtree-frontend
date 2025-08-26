@@ -15,7 +15,7 @@ export const Lane = ({ lane, posts, setPosts, allCompanies}) => {
             {(lane === "applied") && <NewPostingForm setPosts={setPosts} allCompanies={allCompanies} />}
 
             {posts.map(post => (
-                <Posting key={post._id} post={post} />
+                <Posting key={post._id} post={post} lane={lane} />
             ))}
         </div>
     )

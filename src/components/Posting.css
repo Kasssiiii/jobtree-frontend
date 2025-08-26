@@ -39,6 +39,14 @@
     color: var(--color-black);
 }
 
+.posting-timestamps {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    text-align: right;
+    min-width: 110px;
+}
+
 
 .posting .details-link {
     position: absolute;

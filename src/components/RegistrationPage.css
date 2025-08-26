@@ -3,11 +3,11 @@
 .registration-page {
   max-width: 400px;
   margin: 2rem auto;
-  background: var(--color-black);
+  background: var(--color-white);
   border-radius: 12px;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.24);
   padding: 2rem 1.5rem;
-  color: var(--color-white);
+  color: var(--color-black);
 }
 
 .registration-page h2 {

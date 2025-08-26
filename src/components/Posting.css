@@ -8,6 +8,12 @@
     padding: 14px;
     margin: 10px 0;
     background-color: var(--color-green);
+    transition: box-shadow 0.25s cubic-bezier(.4,1.4,.6,1), transform 0.22s cubic-bezier(.4,1.4,.6,1);
+}
+
+.posting:hover {
+    box-shadow: 0 6px 24px rgba(44, 62, 80, 0.18), 0 1.5px 6px rgba(44, 62, 80, 0.12);
+    transform: translateY(-3px) scale(1.025);
 }
 
 .posting h4 {

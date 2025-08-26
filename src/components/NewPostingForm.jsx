@@ -1,13 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { sendPosting } from '../jobTreeApi';
 import { useUserStore } from '../userStore';
 import './NewPostingForm.css';
 
-export const NewPostingForm = ({ setPosts }) => {
+export const NewPostingForm = ({ setPosts, allCompanies }) => {
     const [title, setTitle] = useState('');
     const [company, setCompany] = useState('');
     const [error, setError] = useState('');
     const { userData } = useUserStore();
+    const companies = allCompanies || [];
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -44,7 +45,14 @@ export const NewPostingForm = ({ setPosts }) => {
                         value={company}
                         onChange={e => setCompany(e.target.value)}
                         required
+                        list="company-list"
+                        placeholder="Type or select company"
                     />
+                    <datalist id="company-list">
+                        {companies.map((c) => (
+                            <option key={c} value={c} />
+                        ))}
+                    </datalist>
                 </label>
             </div>
             {error && <div className="error">{error}</div>}

@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer, useState } from 'react';
+import React, { useEffect, useReducer, useState, useMemo } from 'react';
 import { getUserPosts, updatePosting, postingLanes } from '../jobTreeApi';
 import { postOps } from '../postingOps';
 import { Lane } from './Lane';
@@ -13,6 +13,9 @@ export const PostList = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const { userData } = useUserStore();
+    const companies = useMemo(() => {
+        return [...new Set(posts.map(post => post.company).filter(Boolean))];
+    }, [posts]);
 
     
 
@@ -70,7 +73,7 @@ export const PostList = () => {
             <div className='post-list'>
                 <DndContext onDragEnd={handleDragEnd}>
                     {postingLanes.map(lane => (
-                        <Lane key={lane} lane={lane} posts={posts.filter(post => post.stage === lane)} setPosts={setPosts} />
+                        <Lane key={lane} lane={lane} posts={posts.filter(post => post.stage === lane)} setPosts={setPosts} allCompanies={companies}/>
                     ))}
                 </DndContext>
             </div>

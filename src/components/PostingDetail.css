@@ -1,3 +1,4 @@
+@import url('../theme.css');
 
 .posting-timestamps-details {
   display: flex;
@@ -28,7 +29,6 @@
   box-shadow: none;
   outline: none;
 }
-@import url('../theme.css');
 
 .posting-detail-container select:disabled {
   appearance: none;

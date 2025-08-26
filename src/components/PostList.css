@@ -10,7 +10,7 @@
     gap: 12px;
     box-sizing: border-box;
     padding: 16px 8px 8px 8px;
-    background: var(--color-black);
+    background: var(--color-white);
     min-height: 80vh;
     color: var(--color-black);
 }

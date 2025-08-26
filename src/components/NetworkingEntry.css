@@ -41,6 +41,11 @@
   color: var(--color-black);
 }
 
+.networking-entry .delete-btn:hover {
+  background: var(--color-error);
+  color: var(--color-white);
+}
+
 @media (max-width: 600px) {
   .networking-entry {
     padding: 0.7rem;

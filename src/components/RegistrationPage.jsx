@@ -55,44 +55,47 @@ export const RegistrationPage = () => {
     };
 
     return (
-        <div className="registration-page">
-            <h2>Register</h2>
-            <form onSubmit={handleSubmit}>
-                <label>Username:</label>
-                <input
-                    type="text"
-                    name="username"
-                    value={form.username}
-                    onChange={handleChange}
-                />
-                {errors.username && <div className="error">{errors.username}</div>}
-                <label>Email:</label>
-                <input
-                    type="email"
-                    name="email"
-                    value={form.email}
-                    onChange={handleChange}
-                />
-                {errors.email && <div className="error">{errors.email}</div>}
-                <label>Password:</label>
-                <input
-                    type="password"
-                    name="password"
-                    value={form.password}
-                    onChange={handleChange}
-                />
-                {errors.password && <div className="error">{errors.password}</div>}
-                <label>Confirm Password:</label>
-                <input
-                    type="password"
-                    name="confirmPassword"
-                    value={form.confirmPassword}
-                    onChange={handleChange}
-                />
-                {errors.confirmPassword && <div className="error">{errors.confirmPassword}</div>}
-                <button type="submit">Register</button>
-                {errors.general && <div className="error">{errors.general}</div>}
-            </form>
-        </div>
+            <>
+                <div className="registration-bg"></div>
+                <div className="registration-page">
+                    <h2>Register</h2>
+                    <form onSubmit={handleSubmit}>
+                        <label>Username:</label>
+                        <input
+                            type="text"
+                            name="username"
+                            value={form.username}
+                            onChange={handleChange}
+                        />
+                        {errors.username && <div className="error">{errors.username}</div>}
+                        <label>Email:</label>
+                        <input
+                            type="email"
+                            name="email"
+                            value={form.email}
+                            onChange={handleChange}
+                        />
+                        {errors.email && <div className="error">{errors.email}</div>}
+                        <label>Password:</label>
+                        <input
+                            type="password"
+                            name="password"
+                            value={form.password}
+                            onChange={handleChange}
+                        />
+                        {errors.password && <div className="error">{errors.password}</div>}
+                        <label>Confirm Password:</label>
+                        <input
+                            type="password"
+                            name="confirmPassword"
+                            value={form.confirmPassword}
+                            onChange={handleChange}
+                        />
+                        {errors.confirmPassword && <div className="error">{errors.confirmPassword}</div>}
+                        <button type="submit">Register</button>
+                        {errors.general && <div className="error">{errors.general}</div>}
+                    </form>
+                </div>
+            </>
     );
 };

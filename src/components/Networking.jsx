@@ -103,12 +103,13 @@ export const Networking = () => {
                 <form onSubmit={handleSubmit}>
                     <div className="networking-form-row">
                         <div>
-                            <label>Name: </label>
-                            <input name="name" value={form.name} onChange={handleChange} required />
+                            <label htmlFor="networking-name">Name: </label>
+                            <input id="networking-name" name="name" value={form.name} onChange={handleChange} required />
                         </div>
                         <div>
-                            <label>Company: </label>
+                            <label htmlFor="networking-company">Company: </label>
                             <input
+                                id="networking-company"
                                 name="company"
                                 list="company-list"
                                 value={form.company}
@@ -124,8 +125,8 @@ export const Networking = () => {
                         </div>
                     </div>
                     <div className="networking-notes-row">
-                        <label>Notes: </label>
-                        <textarea name="notes" value={form.notes} onChange={handleChange} rows={5} />
+                        <label htmlFor="networking-notes">Notes: </label>
+                        <textarea id="networking-notes" name="notes" value={form.notes} onChange={handleChange} rows={5} />
                     </div>
                     <button type="submit" disabled={loading}>{editId !== null ? 'Update Contact' : 'Add Contact'}</button>
                 </form>

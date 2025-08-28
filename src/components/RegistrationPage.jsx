@@ -55,8 +55,24 @@ export const RegistrationPage = () => {
     };
 
     return (
-            <>
-                <div className="registration-bg"></div>
+        <>
+            <div className="registration-bg"></div>
+            <div className="registration-layout">
+                <div className="registration-info">
+                    <img src="/jobtree.png" alt="JobTree Logo" className="registration-logo" />
+                    <div className="registration-blurb">
+                        <h1>Welcome to JobTree!</h1>
+                        <p>Your all-in-one platform for tracking job applications, networking, and landing your dream job.</p>
+                        <p>Job Tree helps job seekers stay organized during their job search by providing a comprehensive
+                            tracking system for all applications and networking connections. Instead of juggling spreadsheets,
+                            sticky notes, and scattered emails, users get one centralized platform to monitor application statuses,
+                            track networking contacts, and visualize their job search progress. The app transforms the chaotic
+                            job hunting process into an organized, tree-like structure where every opportunity and connection
+                            has its place. Job Tree empowers users to never miss a follow-up, lose track of an application, or
+                            forget a valuable networking contact again.</p>
+                        <p>Join our community and take control of your career journey today!</p>
+                    </div>
+                </div>
                 <div className="registration-page">
                     <h2>Register</h2>
                     <form onSubmit={handleSubmit}>
@@ -96,6 +112,7 @@ export const RegistrationPage = () => {
                         {errors.general && <div className="error">{errors.general}</div>}
                     </form>
                 </div>
-            </>
+            </div>
+        </>
     );
 };

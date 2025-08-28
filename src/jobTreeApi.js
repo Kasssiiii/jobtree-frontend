@@ -5,7 +5,9 @@ export const postingLanes = ["applied", "interview", "offer", "rejected"];
 
 const getResponse = async (path, params, body, authorization, response) => {
   try {
-    params.headers = {};
+    params.headers = {
+      "Access-Control-Allow-Origin": "*"
+    };
     if (body) {
       params.body = JSON.stringify(body);
       params.headers["Content-Type"] = "application/json";

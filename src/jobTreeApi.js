@@ -1,33 +1,7 @@
+const APIUri = "https://jobtree-backend.onrender.com";
+
 // Shared list of posting lanes
 export const postingLanes = ["applied", "interview", "offer", "rejected"];
-// Delete a posting by id
-export const deletePosting = (id, token, response) => {
-  getResponse(`postings/${id}`, { method: "DELETE" }, null, token, response);
-};
-// Get a single posting by id
-export const getPostingById = (id, token, response) => {
-  getResponse(`postings/${id}`, { method: "GET" }, null, token, response);
-};
-// Networking contacts API
-export const getContacts = (token, response) => {
-  getResponse("contacts", { method: "GET" }, null, token, response);
-};
-
-export const addContact = (contact, token, response) => {
-  const params = { method: "POST" };
-  getResponse("contacts", params, contact, token, response);
-};
-
-export const updateContact = (id, contact, token, response) => {
-  const params = { method: "PUT" };
-  getResponse(`contacts/${id}` , params, contact, token, response);
-};
-
-export const deleteContact = (id, token, response) => {
-  const params = { method: "DELETE" };
-  getResponse(`contacts/${id}`, params, null, token, response);
-};
-const APIUri = "http://localhost:8080";
 
 const getResponse = async (path, params, body, authorization, response) => {
   try {
@@ -103,4 +77,32 @@ export const updatePosting = (id, jobTitle, company, stage, token, response) => 
   };
 
   getResponse(`postings/${id}`, params, body, token, response);
+};
+
+// Delete a posting by id
+export const deletePosting = (id, token, response) => {
+  getResponse(`postings/${id}`, { method: "DELETE" }, null, token, response);
+};
+// Get a single posting by id
+export const getPostingById = (id, token, response) => {
+  getResponse(`postings/${id}`, { method: "GET" }, null, token, response);
+};
+// Networking contacts API
+export const getContacts = (token, response) => {
+  getResponse("contacts", { method: "GET" }, null, token, response);
+};
+
+export const addContact = (contact, token, response) => {
+  const params = { method: "POST" };
+  getResponse("contacts", params, contact, token, response);
+};
+
+export const updateContact = (id, contact, token, response) => {
+  const params = { method: "PUT" };
+  getResponse(`contacts/${id}` , params, contact, token, response);
+};
+
+export const deleteContact = (id, token, response) => {
+  const params = { method: "DELETE" };
+  getResponse(`contacts/${id}`, params, null, token, response);
 };

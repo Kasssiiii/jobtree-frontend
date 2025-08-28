@@ -50,15 +50,16 @@ export const PostList = () => {
 
         // fetch old stage
         const oldStage = posts.find(post => post._id === taskId)?.stage;
+        const oldStageChange = posts.find(post => post._id === taskId)?.lastStageChange;
 
-        setPosts({ action: 'setStage', _id: taskId, stage: newStage });
+        setPosts({ action: 'setStage', _id: taskId, stage: newStage, lastStageChange: Date.now() });
 
         updatePosting(taskId, null, null, newStage, userData.token, (code, body) => {
             if (code === 200) {
                 // API call successful, no need to revert
             } else {
                 //API failed, now revert to old stage
-                setPosts({ action: 'setStage', _id: taskId, stage: oldStage });
+                setPosts({ action: 'setStage', _id: taskId, stage: oldStage, lastStageChange: oldStageChange });
             }
         });
     }

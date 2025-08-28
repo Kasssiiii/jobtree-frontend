@@ -4,7 +4,7 @@ import './NavBar.css';
 
 export const NavBar = () => (
     <nav className="navbar">
-        <Link to="/">PostList</Link>
+        <Link to="/">Job Board</Link>
         <Link to="/networking">Networking</Link>
     </nav>
 );

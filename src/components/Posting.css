@@ -9,6 +9,10 @@
     margin: 10px 0;
     background: linear-gradient(135deg, rgba(76, 175, 80, 0.68) 60%, rgba(187, 222, 251, 0.42) 100%);
     transition: box-shadow 0.25s cubic-bezier(.4,1.4,.6,1), transform 0.22s cubic-bezier(.4,1.4,.6,1);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-height: 120px;
 }
 
 .posting:hover {
@@ -19,41 +23,37 @@
 .posting h4 {
     box-sizing: border-box;
     color: var(--color-black);
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    position: relative;
-}
-
-.posting h4 {
+    word-break: break-word;
     margin: 0 0 8px;
-    font-size: 1.15rem;
+    font-size: 1.2rem;
     font-weight: 600;
-    color: var(--color-black);
+    z-index: 1;
 }
 
 
 .posting p {
-    margin: 0;
-    font-size: 1rem;
+    margin: 0 0 8px 0;
+    font-size: 1.2rem;
     color: var(--color-black);
+    word-break: break-word;
+    z-index: 1;
 }
 
 .posting-timestamps {
-    position: absolute;
-    right: 10px;
-    bottom: 10px;
+    position: relative;
     text-align: right;
     min-width: 110px;
+    margin-top: 18px;
+    z-index: 1;
 }
 
 
 .posting .details-link {
     position: absolute;
-    top: 8px;
-    right: 8px;
-    font-size: 0.8em;
-    padding: 2px 7px;
+    bottom: 8px;
+    left: 8px;
+    font-size: 1.2em;
+    padding: 8px 14px;
     background: var(--color-blue);
     border-radius: 4px;
     text-decoration: none;

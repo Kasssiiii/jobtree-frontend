@@ -25,7 +25,7 @@ export const Posting = ({ post, lane }) => {
                 {lane && lane.toLowerCase() === 'applied' ? (
                     <small>Created {post.createdAt ? moment(post.createdAt).fromNow() : 'N/A'}</small>
                 ) : (
-                    <small>Last stage change {post.lastStageChange ? moment(post.lastStageChange).fromNow() : 'N/A'}</small>
+                    <small>Reached {post.lastStageChange ? moment(post.lastStageChange).fromNow() : 'N/A'}</small>
                 )}
             </div>
         </div>

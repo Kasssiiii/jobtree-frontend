@@ -76,37 +76,41 @@ export const RegistrationPage = () => {
                 <div className="registration-page">
                     <h2>Register</h2>
                     <form onSubmit={handleSubmit}>
-                        <label>Username:</label>
-                        <input
-                            type="text"
-                            name="username"
-                            value={form.username}
-                            onChange={handleChange}
-                        />
+                            <label htmlFor="username">Username:</label>
+                            <input
+                                id="username"
+                                type="text"
+                                name="username"
+                                value={form.username}
+                                onChange={handleChange}
+                            />
                         {errors.username && <div className="error">{errors.username}</div>}
-                        <label>Email:</label>
-                        <input
-                            type="email"
-                            name="email"
-                            value={form.email}
-                            onChange={handleChange}
-                        />
+                            <label htmlFor="email">Email:</label>
+                            <input
+                                id="email"
+                                type="email"
+                                name="email"
+                                value={form.email}
+                                onChange={handleChange}
+                            />
                         {errors.email && <div className="error">{errors.email}</div>}
-                        <label>Password:</label>
-                        <input
-                            type="password"
-                            name="password"
-                            value={form.password}
-                            onChange={handleChange}
-                        />
+                            <label htmlFor="password">Password:</label>
+                            <input
+                                id="password"
+                                type="password"
+                                name="password"
+                                value={form.password}
+                                onChange={handleChange}
+                            />
                         {errors.password && <div className="error">{errors.password}</div>}
-                        <label>Confirm Password:</label>
-                        <input
-                            type="password"
-                            name="confirmPassword"
-                            value={form.confirmPassword}
-                            onChange={handleChange}
-                        />
+                            <label htmlFor="confirmPassword">Confirm Password:</label>
+                            <input
+                                id="confirmPassword"
+                                type="password"
+                                name="confirmPassword"
+                                value={form.confirmPassword}
+                                onChange={handleChange}
+                            />
                         {errors.confirmPassword && <div className="error">{errors.confirmPassword}</div>}
                         <button type="submit">Register</button>
                         {errors.general && <div className="error">{errors.general}</div>}

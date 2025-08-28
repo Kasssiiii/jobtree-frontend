@@ -93,16 +93,16 @@ export const PostingDetail = () => {
                 <h2>Posting Details</h2>
                 <form style={{ marginBottom: '1rem' }}>
                     <div>
-                        <label>Job Title: </label>
-                        <input name="jobTitle" value={form.jobTitle} onChange={handleChange} required disabled={!editMode} />
+                        <label htmlFor="posting-jobTitle">Job Title: </label>
+                        <input id="posting-jobTitle" name="jobTitle" value={form.jobTitle} onChange={handleChange} required disabled={!editMode} />
                     </div>
                     <div>
-                        <label>Company: </label>
-                        <input name="company" value={form.company} onChange={handleChange} required disabled={!editMode} />
+                        <label htmlFor="posting-company">Company: </label>
+                        <input id="posting-company" name="company" value={form.company} onChange={handleChange} required disabled={!editMode} />
                     </div>
                     <div>
-                        <label>Stage: </label>
-                        <select name="stage" value={form.stage} onChange={handleChange} required disabled={!editMode}>
+                        <label htmlFor="posting-stage">Stage: </label>
+                        <select id="posting-stage" name="stage" value={form.stage} onChange={handleChange} required disabled={!editMode}>
                             {postingLanes.map(lane => (
                                 <option key={lane} value={lane}>{lane.charAt(0).toUpperCase() + lane.slice(1)}</option>
                             ))}

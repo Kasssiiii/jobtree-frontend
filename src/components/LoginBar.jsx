@@ -11,6 +11,11 @@ export const LoginBar = () => {
     const [errorMessage, setErrorMessage] = useState("");
     const { setUserData, clearUserData, userData } = useUserStore();
 
+    // in case user is registered through Registration page
+    if (userData && userData.token && errorMessage) {
+        setErrorMessage("");
+    }
+
     const handleLogin = () => {
         // ensure user and password are set
         if (username && password) {
